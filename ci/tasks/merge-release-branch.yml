@@ -13,5 +13,5 @@ outputs:
 run:
   path: /bin/bash
   args:
-  - repo-stg/ci/tasks/merge-release-branch.sh
+  - repo/ci/tasks/merge-release-branch.sh
 
