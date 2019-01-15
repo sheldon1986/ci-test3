@@ -111,7 +111,7 @@ jobs:
           passed: [ pass-dev ]
           trigger: true
       - task: merge-stg-to-master
-        file: repo-stg/ci/tasks/repo-dev.yml
+        file: repo/ci/tasks/repo-dev.yml
         params:
           GIT_EMAIL: {{git-email}}
           GIT_NAME: {{git-name}}
@@ -170,7 +170,7 @@ jobs:
           passed: [ pass-stg ]
           trigger: true
       - task: merge-release-to-master
-        file: repo-master/ci/tasks/merge-release-branch.yml
+        file: repo/ci/tasks/merge-release-branch.yml
         params:
           GIT_EMAIL: {{git-email}}
           GIT_NAME: {{git-name}}
