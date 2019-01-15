@@ -13,4 +13,4 @@ outputs:
 run:
   path: /bin/bash
   args:
-  - repo-dev/ci/tasks/repo-dev.sh
+  - repo/ci/tasks/repo-dev.sh
