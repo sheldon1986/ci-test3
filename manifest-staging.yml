@@ -1,0 +1,6 @@
+---
+applications:
+  - name: concourse-ci-demo-staging
+    path: target/demo-0.0.1-SNAPSHOT.jar
+    buildpack: java_buildpack
+    memory: 1024m
