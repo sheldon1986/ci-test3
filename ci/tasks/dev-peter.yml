@@ -1,0 +1,16 @@
+---
+platform: linux
+image_resource:
+  type: docker-image
+  source:
+    repository: getourneau/alpine-bash-git
+inputs:
+  - name: repo
+    #  - name: repo-release
+  - name: dev-peter
+outputs:
+  - name: out
+run:
+  path: /bin/bash
+  args:
+  - repo/ci/tasks/dev-peter.sh
