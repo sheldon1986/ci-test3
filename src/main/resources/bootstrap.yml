@@ -1,0 +1,12 @@
+server:
+  port: 8310
+
+spring:
+  main:    allow-bean-definition-overriding: true
+  cloud:
+    config:
+      uri: http://conf.mzdev.kr:8999
+      name: devops-comment-api
+      headers:
+        application-name: devops-comment-api
+        application-password: '!@dfg43t@#$'
