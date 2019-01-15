@@ -13,4 +13,4 @@ outputs:
 run:
   path: /bin/bash
   args:
-  - dev-peter/ci/tasks/dev-peter.sh
+  - repo/ci/tasks/dev-peter.sh
