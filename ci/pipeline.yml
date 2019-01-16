@@ -105,9 +105,10 @@ jobs:
     public: true
     plan:
       - aggregate:
-        - get: repo
+        - get: repo-stg
           resource: repo-stg
-        - get: repo-dev
+        - get: repo
+	  resource: repo-dev
           passed: [ pass-dev ]
           trigger: true
       - task: merge-stg-to-master

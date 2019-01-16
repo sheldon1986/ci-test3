@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Concourse CI/CD Demo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.26.3/css/uikit.gradient.min.css"/>
+</head>
+
+<body>
+
+<div class="uk-grid">
+    <div class="uk-width-1-5"></div>
+    <div class="uk-width-3-5">
+        <div class="uk-text-center">
+            <h1>Concourse CI/CD Demo APJ Rockstar team︎</h1>
+            <p>
+                <img src="http://photos3.meetupstatic.com/photos/event/a/7/8/3/highres_448782883.jpeg" width="100">
+            </p>
+        </div>
+        <table class="uk-table uk-table-striped">
+            <tr>
+                <th>Build Version</th>
+                <td id="build-version"></td>
+            </tr>
+            <tr>
+                <th>Build Time</th>
+                <td><time id="build-time"></time></td>
+            </tr>
+            <tr>
+                <th>Commit Id</th>
+                <td id="commit-id"></td>
+            </tr>
+            <tr>
+                <th>Commit Time</th>
+                <td><time id="commit-time"></time></td>
+            </tr>
+            <tr>
+                <th>CF Space</th>
+                <td id="cf-space"></td>
+            </tr>
+        </table>
+
+        <p>
+            <a href="https://github.com/myminseok/concourse-ci-demo-minseok"><i class="uk-icon-github"></i>
+                myminseok/concourse-ci-demo-minseok</a>
+        </p>
+    </div>
+    <div class="uk-width-1-5"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.5.2/jquery.timeago.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.getJSON('/info', function (res) {
+                $('#build-version').text(res.build.version);
+                $('#build-time').text(res.build.time).attr('datetime', res.build.time).timeago();
+                $('#commit-id').html('<a href="https://github.com/myminseok/concourse-ci-demo-minseok/tree/' + res.git.branch + '">' + res.git.commit.id + '</a>');
+                $('#commit-time').text(res.git.commit.time).attr('datetime', res.git.commit.time).timeago();
+            });
+            $.getJSON('/env', function (res) {
+                if (res.vcap) {
+                    $('#cf-space').text(res.vcap['vcap.application.space_name']);
+                }
+            });
+        });
+    </script>
+</div>
+</body>
+</html>

@@ -3,9 +3,6 @@
 LIST=`cat $1`
 
 git branch staging
-git checkout staging
-git pull origin master
-git push origin staging
 
 for list in ${LIST[*]}
        do
@@ -19,5 +16,9 @@ for list in ${LIST[*]}
 	       git push origin $list
 		fly -t cc sp -p $list -c ./ci/$list.yml -l ./ci/credentials.yml -n
 		fly -t cc up -p $list
+
+		git checkout staging
+		git pull origin $list
+		git push origin staging
 done
 
